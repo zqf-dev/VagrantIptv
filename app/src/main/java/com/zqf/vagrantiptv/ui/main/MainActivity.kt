@@ -1,4 +1,4 @@
-package com.zqf.vagrantiptv
+package com.zqf.vagrantiptv.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,7 +13,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.sampleText.text = stringFromJNI()
     }
 
     external fun stringFromJNI(): String
