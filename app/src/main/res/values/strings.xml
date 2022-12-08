@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">VagrantIptv</string>
     <string name="launch_tip_str">流浪IPTV</string>
-    <string name="launch_version_str">Copyright @ 2022 z All Right Reserved</string>
+    <string name="launch_version_str">Copyright @ 2022 zqf All Right Reserved</string>
     <string name="home">首页</string>
     <string name="discover">发现</string>
     <string name="me">我的</string>
