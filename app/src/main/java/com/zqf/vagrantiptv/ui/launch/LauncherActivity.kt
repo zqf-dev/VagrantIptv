@@ -1,17 +1,26 @@
 package com.zqf.vagrantiptv.ui.launch
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.zqf.vagrantiptv.R
+import com.zqf.vagrantiptv.base.BaseMVPActivity
 import com.zqf.vagrantiptv.databinding.LaunchActivityBinding
+import com.zqf.vagrantiptv.ui.presenter.LaunchPresenter
 
-public class LauncherActivity : AppCompatActivity() {
+class LauncherActivity : AppCompatActivity() {
 
-    lateinit var launchActBinding: LaunchActivityBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        launchActBinding = LaunchActivityBinding.inflate(layoutInflater)
-        setContentView(launchActBinding.root)
-    }
+//    override fun initV() {
+//        mPresenter.handlerDelayed(this)
+//    }
+//
+//    override fun getViewBinding(): LaunchActivityBinding {
+//        return LaunchActivityBinding.inflate(layoutInflater)
+//    }
+//
+//    override fun getLayout(): Int {
+//        return R.layout.launch_activity
+//    }
+//
+//    override fun getPresent(): LaunchPresenter {
+//        return LaunchPresenter()
+//    }
 }
