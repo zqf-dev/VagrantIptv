@@ -1,16 +1,23 @@
 package com.zqf.vagrantiptv.ui.main
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import com.zqf.vagrantiptv.base.BaseMVPActivity
 import com.zqf.vagrantiptv.databinding.ActivityMainBinding
+import com.zqf.vagrantiptv.ui.presenter.MainPresenter
 
-class MainActivity : AppCompatActivity() {
+/**
+ * Main主页
+ */
+class MainActivity : BaseMVPActivity<ActivityMainBinding, MainPresenter>() {
 
-    private lateinit var binding: ActivityMainBinding
+    override fun getViewBinding(): ActivityMainBinding {
+        return ActivityMainBinding.inflate(layoutInflater)
+    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun getPresent(): MainPresenter {
+        return MainPresenter()
+    }
+
+    override fun initV() {
+
     }
 }

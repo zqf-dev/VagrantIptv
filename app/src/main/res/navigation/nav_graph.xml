@@ -11,4 +11,16 @@
         android:label="@string/home"
         tools:layout="@layout/home_fg_layout" />
 
+    <fragment
+        android:id="@+id/discover_fg"
+        android:name="com.zqf.vagrantiptv.ui.fg.DiscoverFg"
+        android:label="@string/discover"
+        tools:layout="@layout/discover_fg_layout" />
+
+    <fragment
+        android:id="@+id/me_fg"
+        android:name="com.zqf.vagrantiptv.ui.fg.MeFg"
+        android:label="@string/me"
+        tools:layout="@layout/me_fg_layout" />
+
 </navigation>

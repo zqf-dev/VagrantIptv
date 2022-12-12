@@ -1,6 +1,7 @@
 package com.zqf.vagrantiptv.base
 
-import androidx.lifecycle.*
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
@@ -8,7 +9,7 @@ import java.lang.ref.WeakReference
 
 abstract class BasePresenter<V : IView> : IPresenter<V>, DefaultLifecycleObserver {
 
-    private var mView: WeakReference<V>? = null
+    lateinit var mView: WeakReference<V>
 
     var mCoroutineScope = CoroutineScope(Dispatchers.Main)
 
@@ -17,15 +18,12 @@ abstract class BasePresenter<V : IView> : IPresenter<V>, DefaultLifecycleObserve
     }
 
     override fun detachView() {
-        mView?.clear()
+        mView.clear()
         mCoroutineScope.cancel()
     }
 
     open fun getView(): V? {
-        if (mView != null) {
-            return mView!!.get()
-        }
-        return null
+        return mView.get()
     }
 
     override fun onDestroy(owner: LifecycleOwner) {

@@ -10,6 +10,6 @@ interface LaunchContact {
     }
 
     interface Presenter {
-        fun handlerDelayed(activity: Activity)
+        fun delayed(mAct: Activity)
     }
 }
