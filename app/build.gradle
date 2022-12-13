@@ -74,4 +74,8 @@ dependencies {
     implementation 'io.github.scwang90:refresh-footer-classics:2.0.5'
     //MMKV
     implementation 'com.tencent:mmkv:1.2.14'
+    //MagicIndicator
+    implementation 'com.github.hackware1993:MagicIndicator:1.7.0'
+    //banner
+    implementation 'io.github.youth5201314:banner:2.2.2'
 }

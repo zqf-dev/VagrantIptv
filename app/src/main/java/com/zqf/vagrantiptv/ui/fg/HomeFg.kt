@@ -7,6 +7,8 @@ import com.zqf.vagrantiptv.ui.presenter.HomeFgPresenter
 
 class HomeFg : BaseFragment<HomeFgLayoutBinding, HomeFgPresenter>(), HomeFgContact.HomeFgView {
 
+    val titleList: MutableList<String> = mutableListOf("精选", "电视剧", "电影", "动漫", "旅游", "体育", "音乐")
+
     override fun getPresenter(): HomeFgPresenter {
         return HomeFgPresenter(this)
     }
