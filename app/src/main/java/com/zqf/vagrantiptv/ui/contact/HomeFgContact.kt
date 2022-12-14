@@ -7,7 +7,7 @@ import net.lucode.hackware.magicindicator.MagicIndicator
 
 interface HomeFgContact {
 
-    interface HomeFgViewBase : BaseIView {
+    interface IView : BaseIView {
 
     }
 

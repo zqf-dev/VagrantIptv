@@ -9,8 +9,15 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewbinding.ViewBinding
 import java.lang.reflect.ParameterizedType
 
-abstract class BaseFragment<VB : ViewBinding, P : BasePresenter<out BaseIView>> : Fragment() {
+/**
+ * 预加载页面回调的生命周期流程：
+ * setUserVisibleHint() -->onAttach() --> onCreate()-->
+ * onCreateView()-->onActivityCreate() --> onStart() --> onResume()
+ */
+abstract class BaseLazyFragment<VB : ViewBinding, P : BasePresenter<out BaseIView>> : Fragment() {
 
+    //懒加载过
+    var isLazyLoaded: Boolean = false
     lateinit var mPresenter: P
     lateinit var mVBind: VB
     lateinit var mContext: FragmentActivity
@@ -35,6 +42,17 @@ abstract class BaseFragment<VB : ViewBinding, P : BasePresenter<out BaseIView>> 
         return mVBind.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        if (!isLazyLoaded && !isHidden) {
+            isLazyLoaded = true
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        isLazyLoaded = false
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

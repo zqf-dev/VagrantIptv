@@ -6,7 +6,7 @@ import com.zqf.vagrantiptv.ui.adapter.HomeVpAdapter
 import com.zqf.vagrantiptv.ui.contact.HomeFgContact
 import com.zqf.vagrantiptv.ui.presenter.HomeFgPresenter
 
-class HomeFg : BaseFragment<HomeFgLayoutBinding, HomeFgPresenter>(), HomeFgContact.HomeFgViewBase {
+class HomeFg : BaseFragment<HomeFgLayoutBinding, HomeFgPresenter>(), HomeFgContact.IView {
 
     override fun getPresenter(): HomeFgPresenter {
         return HomeFgPresenter(this)

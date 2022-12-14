@@ -1,5 +1,7 @@
 package com.zqf.vagrantiptv.ui.main
 
+import android.view.KeyEvent
+import android.widget.Toast
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.zqf.vagrantiptv.R
@@ -29,5 +31,19 @@ class MainActivity : BaseMVPActivity<ActivityMainBinding, MainPresenter>() {
         //NavigationUI.setupActionBarWithNavController(this, navController, configuration)
         NavigationUI.setupWithNavController(mBnv, navController)
         mBnv.setOnLongClickListener { true }
+    }
+
+    private var exitTime: Long = 0
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event?.action == KeyEvent.ACTION_DOWN) {
+            if (System.currentTimeMillis() - exitTime > 2000) {
+                Toast.makeText(this, "再按一次退出应用", Toast.LENGTH_SHORT).show()
+                exitTime = System.currentTimeMillis()
+            } else {
+                finish()
+            }
+            return true
+        }
+        return super.onKeyDown(keyCode, event)
     }
 }

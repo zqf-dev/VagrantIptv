@@ -20,8 +20,8 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.ColorT
  * Author: zqf
  * Date: 2021/10/08
  */
-class HomeFgPresenter(v: HomeFgContact.HomeFgViewBase) :
-    BasePresenter<HomeFgContact.HomeFgViewBase>(),
+class HomeFgPresenter(v: HomeFgContact.IView) :
+    BasePresenter<HomeFgContact.IView>(),
     HomeFgContact.Presenter {
 
     val titleList: MutableList<String> =

@@ -9,7 +9,7 @@ import java.lang.ref.WeakReference
 
 abstract class BasePresenter<V : BaseIView> : IPresenter<V>, DefaultLifecycleObserver {
 
-    lateinit var mView: WeakReference<V>
+    private var mView: WeakReference<V>? = null
 
     var mCoroutineScope = CoroutineScope(Dispatchers.Main)
 
@@ -18,12 +18,12 @@ abstract class BasePresenter<V : BaseIView> : IPresenter<V>, DefaultLifecycleObs
     }
 
     override fun detachView() {
-        mView.clear()
+        mView?.clear()
         mCoroutineScope.cancel()
     }
 
     open fun getView(): V? {
-        return mView.get()
+        return mView?.get()
     }
 
     override fun onDestroy(owner: LifecycleOwner) {
