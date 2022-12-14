@@ -9,7 +9,7 @@ import com.zqf.vagrantiptv.ui.presenter.LaunchPresenter
  * 启动页
  */
 class LauncherActivity : BaseMVPActivity<LaunchActivityBinding, LaunchPresenter>(),
-    LaunchContact.LaunchView {
+    LaunchContact.LaunchViewBase {
 
     override fun getViewBinding(): LaunchActivityBinding {
         return LaunchActivityBinding.inflate(layoutInflater)

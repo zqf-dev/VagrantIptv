@@ -7,7 +7,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import java.lang.ref.WeakReference
 
-abstract class BasePresenter<V : IView> : IPresenter<V>, DefaultLifecycleObserver {
+abstract class BasePresenter<V : BaseIView> : IPresenter<V>, DefaultLifecycleObserver {
 
     lateinit var mView: WeakReference<V>
 

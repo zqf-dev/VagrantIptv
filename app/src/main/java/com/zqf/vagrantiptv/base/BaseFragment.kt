@@ -9,7 +9,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewbinding.ViewBinding
 import java.lang.reflect.ParameterizedType
 
-abstract class BaseFragment<VB : ViewBinding, P : BasePresenter<out IView>> : Fragment() {
+abstract class BaseFragment<VB : ViewBinding, P : BasePresenter<out BaseIView>> : Fragment() {
 
     lateinit var mPresenter: P
     lateinit var mVBind: VB
@@ -32,8 +32,11 @@ abstract class BaseFragment<VB : ViewBinding, P : BasePresenter<out IView>> : Fr
             Boolean::class.java
         )
         mVBind = method.invoke(null, layoutInflater, container, false) as VB
+        initV()
         return mVBind.root
     }
 
     abstract fun getPresenter(): P
+
+    abstract fun initV()
 }

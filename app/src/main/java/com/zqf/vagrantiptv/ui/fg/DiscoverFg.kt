@@ -6,8 +6,12 @@ import com.zqf.vagrantiptv.ui.contact.DiscoverFgContact
 import com.zqf.vagrantiptv.ui.presenter.DiscoverFgPresenter
 
 class DiscoverFg : BaseFragment<DiscoverFgLayoutBinding, DiscoverFgPresenter>(),
-    DiscoverFgContact.View {
+    DiscoverFgContact.ViewBase {
     override fun getPresenter(): DiscoverFgPresenter {
         return DiscoverFgPresenter(this)
+    }
+
+    override fun initV() {
+
     }
 }

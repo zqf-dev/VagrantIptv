@@ -1,11 +1,11 @@
 package com.zqf.vagrantiptv.ui.contact
 
 import android.app.Activity
-import com.zqf.vagrantiptv.base.IView
+import com.zqf.vagrantiptv.base.BaseIView
 
 interface LaunchContact {
 
-    interface LaunchView : IView {
+    interface LaunchViewBase : BaseIView {
 
     }
 

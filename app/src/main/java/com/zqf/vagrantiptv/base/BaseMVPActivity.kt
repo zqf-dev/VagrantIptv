@@ -7,7 +7,7 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 
-abstract class BaseMVPActivity<VB : ViewBinding, P : BasePresenter<out IView>> :
+abstract class BaseMVPActivity<VB : ViewBinding, P : BasePresenter<out BaseIView>> :
     AppCompatActivity() {
 
     lateinit var mPresenter: P

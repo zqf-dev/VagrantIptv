@@ -1,10 +1,10 @@
 package com.zqf.vagrantiptv.ui.contact
 
-import com.zqf.vagrantiptv.base.IView
+import com.zqf.vagrantiptv.base.BaseIView
 
 interface DiscoverFgContact {
 
-    interface View : IView {
+    interface ViewBase : BaseIView {
 
     }
 

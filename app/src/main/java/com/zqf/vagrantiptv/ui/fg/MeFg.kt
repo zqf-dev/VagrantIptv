@@ -6,8 +6,12 @@ import com.zqf.vagrantiptv.ui.contact.MeFgContact
 import com.zqf.vagrantiptv.ui.presenter.MeFgPresenter
 
 class MeFg : BaseFragment<MeFgLayoutBinding, MeFgPresenter>(),
-    MeFgContact.View {
+    MeFgContact.ViewBase {
     override fun getPresenter(): MeFgPresenter {
         return MeFgPresenter(this)
+    }
+
+    override fun initV() {
+
     }
 }

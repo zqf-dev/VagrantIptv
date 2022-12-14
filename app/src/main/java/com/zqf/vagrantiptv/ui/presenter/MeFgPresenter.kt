@@ -7,7 +7,7 @@ import com.zqf.vagrantiptv.ui.contact.MeFgContact
  * Author: zqf
  * Date: 2021/10/08
  */
-class MeFgPresenter(v: MeFgContact.View) : BasePresenter<MeFgContact.View>(),
+class MeFgPresenter(v: MeFgContact.ViewBase) : BasePresenter<MeFgContact.ViewBase>(),
     MeFgContact.Presenter {
 
     init {

@@ -1,7 +1,6 @@
 package com.zqf.vagrantiptv.ui.main
 
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.zqf.vagrantiptv.R
 import com.zqf.vagrantiptv.base.BaseMVPActivity
@@ -25,8 +24,10 @@ class MainActivity : BaseMVPActivity<ActivityMainBinding, MainPresenter>() {
         val mBnv = mVBind.bnv
         val mNHostFg = supportFragmentManager.findFragmentById(R.id.content_main) as NavHostFragment
         val navController = mNHostFg.navController
-        val configuration = AppBarConfiguration.Builder(mBnv.menu).build()
-        NavigationUI.setupActionBarWithNavController(this, navController, configuration)
+        //Theme主题不是NoActionBar可绑定menu
+        //val configuration = AppBarConfiguration.Builder(mBnv.menu).build()
+        //NavigationUI.setupActionBarWithNavController(this, navController, configuration)
         NavigationUI.setupWithNavController(mBnv, navController)
+        mBnv.setOnLongClickListener { true }
     }
 }

@@ -14,7 +14,7 @@ import com.zqf.vagrantiptv.utils.ZRouter
  * Date: 2021/10/08
  * 启动页的presenter
  */
-class LaunchPresenter(v: LaunchContact.LaunchView) : BasePresenter<LaunchContact.LaunchView>(),
+class LaunchPresenter(v: LaunchContact.LaunchViewBase) : BasePresenter<LaunchContact.LaunchViewBase>(),
     LaunchContact.Presenter {
     private var handler: Handler? = Handler(Looper.getMainLooper())
 

@@ -15,11 +15,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.zqf.vagrantiptv.widget.CommSearch
-            android:id="@+id/home_fg_search"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_50" />
-
         <net.lucode.hackware.magicindicator.MagicIndicator
             android:id="@+id/indicator"
             android:layout_width="match_parent"
