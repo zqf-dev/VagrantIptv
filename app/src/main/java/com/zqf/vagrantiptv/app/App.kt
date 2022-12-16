@@ -1,6 +1,8 @@
 package com.zqf.vagrantiptv.app
 
+import android.annotation.SuppressLint
 import android.app.Application
+import android.content.Context
 import com.scwang.smart.refresh.footer.ClassicsFooter
 import com.scwang.smart.refresh.header.ClassicsHeader
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
@@ -16,6 +18,7 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        context = applicationContext
         initLog()
         initKKMV()
     }
@@ -29,7 +32,14 @@ class App : Application() {
         FLog.e("mmkv path: >>$mMMKVPath")
     }
 
+    private fun getContext(): Context {
+        return context
+    }
+
     companion object {
+        @SuppressLint("StaticFieldLeak")
+        lateinit var context: Context
+
         init {
             SmartRefreshLayout.setDefaultRefreshHeaderCreator(DefaultRefreshHeaderCreator { context, layout ->
                 //设置刷新头的背景色
