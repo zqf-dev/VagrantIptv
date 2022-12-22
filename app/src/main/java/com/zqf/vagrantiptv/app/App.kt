@@ -49,6 +49,7 @@ class App : Application() {
             SmartRefreshLayout.setDefaultRefreshFooterCreator(DefaultRefreshFooterCreator { context, layout ->
                 //设置滑动到底部自动加载更多
                 layout.setEnableAutoLoadMore(false)
+                layout.setEnableLoadMore(false)
                 return@DefaultRefreshFooterCreator ClassicsFooter(context).setDrawableSize(20f)
             })
         }

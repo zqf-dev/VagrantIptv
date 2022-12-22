@@ -35,7 +35,6 @@ abstract class BaseLazyFragment<VB : ViewBinding, P : BasePresenter<out BaseIVie
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        FLog.e("onCreateView")
         mContext = requireActivity()
         mPresenter = getPresenter()
         lifecycle.addObserver(mPresenter)
@@ -63,7 +62,6 @@ abstract class BaseLazyFragment<VB : ViewBinding, P : BasePresenter<out BaseIVie
 
     override fun onResume() {
         super.onResume()
-        FLog.e("onResume")
         // 跳转Activity回来后，缓存的Fragment会走onResume
         // 如果不是第一次加载就再次加载数据
         if (!isFirstLoad) {
@@ -102,7 +100,6 @@ abstract class BaseLazyFragment<VB : ViewBinding, P : BasePresenter<out BaseIVie
      */
     private fun dispatchVisible(isVisible: Boolean) {
         currentVisibleStatus = isVisible
-
         // 解决viewpager嵌套 子fragment会加载数据的问题
         if (isVisible && isParentVisible()) {
             return
@@ -113,7 +110,7 @@ abstract class BaseLazyFragment<VB : ViewBinding, P : BasePresenter<out BaseIVie
                 onFgFirstVisible()
                 isFirstLoad = false
             }
-            onFgResume()
+            //onFgResume()
             dispatchChild(true)
         } else {
             onFgPause()
@@ -168,7 +165,7 @@ abstract class BaseLazyFragment<VB : ViewBinding, P : BasePresenter<out BaseIVie
      * 停止加载数据
      * 第一次加载数据
      */
-    abstract fun onFgResume()
+    //abstract fun onFgResume()
 
     open fun onFgPause() {}
 

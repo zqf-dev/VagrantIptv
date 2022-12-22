@@ -22,16 +22,18 @@ class IPTVDataSource {
                 json.put("data", array)
                 val iStream = App.context.assets.open(fileName)
                 val isReader = InputStreamReader(iStream)
-                val br = BufferedReader(isReader)
-                var lenStr: String
-                while (br.readLine().also { lenStr = it } != null) {
-                    dataHandle(lenStr, array)
+                BufferedReader(isReader).use {
+                    var line: String
+                    while (true) {
+                        line = it.readLine() ?: break
+                        dataHandle(line, array)
+                    }
                 }
+                iStream.close()
+                isReader.close()
                 return json.toString()
-            } catch (e: Exception) {
+            }catch (e: Exception) {
                 e.printStackTrace()
-            } finally {
-
             }
             return ""
         }
@@ -43,7 +45,7 @@ class IPTVDataSource {
             }
             if (line.contains("http") || line.contains("https")) {
                 val json = JSONObject()
-                json.put("iptvName", line.split(",".toRegex()).toTypedArray().get(1))
+                json.put("iptvName", el.split(",")[1])
                 json.put("iptvUrl", line)
                 array.put(json)
                 el = ""

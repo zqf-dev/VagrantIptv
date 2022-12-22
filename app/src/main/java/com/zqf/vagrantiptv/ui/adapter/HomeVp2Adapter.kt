@@ -3,7 +3,7 @@ package com.zqf.vagrantiptv.ui.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.zqf.vagrantiptv.ui.fg.OtherTypeFg
+import com.zqf.vagrantiptv.ui.fg.TabTypeFg
 
 class HomeVp2Adapter(fm: FragmentActivity, titleList: MutableList<String>) :
     FragmentStateAdapter(fm) {
@@ -13,6 +13,6 @@ class HomeVp2Adapter(fm: FragmentActivity, titleList: MutableList<String>) :
     }
 
     override fun createFragment(position: Int): Fragment {
-        return OtherTypeFg()
+        return TabTypeFg()
     }
 }

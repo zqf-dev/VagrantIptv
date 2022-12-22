@@ -9,6 +9,6 @@ interface OtherTypeFgContact {
     }
 
     interface Presenter {
-
+        fun getIPTVData(type: Int)
     }
 }

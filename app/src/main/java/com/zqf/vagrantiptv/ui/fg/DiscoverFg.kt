@@ -12,6 +12,5 @@ class DiscoverFg : BaseFragment<DiscoverFgLayoutBinding, DiscoverFgPresenter>(),
     }
 
     override fun initV() {
-
     }
 }
