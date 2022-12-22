@@ -1,5 +1,6 @@
 package com.zqf.vagrantiptv.ui.main
 
+import android.os.Bundle
 import android.view.KeyEvent
 import android.widget.Toast
 import androidx.fragment.app.FragmentTransaction
@@ -23,6 +24,7 @@ class MainActivity : BaseMVPActivity<ActivityMainBinding, MainPresenter>() {
     private var mHomeFg: HomeFg? = null
     private var mDiscoverFg: DiscoverFg? = null
     private var mMeFg: MeFg? = null
+    private val BOTTOM_INDEX: String = "bottom_index"
 
     override fun getViewBinding(): ActivityMainBinding {
         return ActivityMainBinding.inflate(layoutInflater)
@@ -30,6 +32,18 @@ class MainActivity : BaseMVPActivity<ActivityMainBinding, MainPresenter>() {
 
     override fun getPresent(): MainPresenter {
         return MainPresenter()
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        if (savedInstanceState != null) {
+            mIndex = savedInstanceState.getInt(BOTTOM_INDEX)
+        }
+        super.onCreate(savedInstanceState)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt(BOTTOM_INDEX, mIndex)
     }
 
     override fun initV() {
@@ -109,5 +123,12 @@ class MainActivity : BaseMVPActivity<ActivityMainBinding, MainPresenter>() {
             return true
         }
         return super.onKeyDown(keyCode, event)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mHomeFg = null
+        mDiscoverFg = null
+        mMeFg = null
     }
 }
