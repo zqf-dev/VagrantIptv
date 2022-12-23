@@ -23,4 +23,11 @@ class OtherTypeFgPresenter(v: OtherTypeFgContact.IView) :
             }
         }
     }
+
+    fun getIPTVBanner() {
+        mCoroutineScope.launch {
+            val data = IPTVDataSource.getBannerData()
+            getView()?.banner(data)
+        }
+    }
 }

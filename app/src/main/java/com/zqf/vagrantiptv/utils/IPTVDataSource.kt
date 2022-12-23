@@ -1,7 +1,9 @@
 package com.zqf.vagrantiptv.utils
 
 import android.text.TextUtils
+import com.zqf.vagrantiptv.R
 import com.zqf.vagrantiptv.app.App
+import com.zqf.vagrantiptv.entity.BannerEntity
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.BufferedReader
@@ -32,7 +34,7 @@ class IPTVDataSource {
                 iStream.close()
                 isReader.close()
                 return json.toString()
-            }catch (e: Exception) {
+            } catch (e: Exception) {
                 e.printStackTrace()
             }
             return ""
@@ -50,6 +52,22 @@ class IPTVDataSource {
                 array.put(json)
                 el = ""
             }
+        }
+
+        /**
+         * banner数据
+         */
+        fun getBannerData(): MutableList<BannerEntity> {
+            val imgList = mutableListOf<BannerEntity>()
+            imgList.add(BannerEntity(R.mipmap.banner1))
+            imgList.add(BannerEntity(R.mipmap.banner2))
+            imgList.add(BannerEntity(R.mipmap.banner3))
+            imgList.add(BannerEntity(R.mipmap.banner4))
+            imgList.add(BannerEntity(R.mipmap.banner5))
+            imgList.add(BannerEntity(R.mipmap.banner6))
+            imgList.add(BannerEntity(R.mipmap.banner7))
+            imgList.add(BannerEntity(R.mipmap.banner8))
+            return imgList
         }
     }
 }

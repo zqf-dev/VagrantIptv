@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:tag="layout/me_fg_layout_0">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <com.scwang.smart.refresh.layout.SmartRefreshLayout
         android:id="@+id/me_srf"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        app:srlAccentColor="@color/white"
-        app:srlPrimaryColor="@color/purple_500">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:id="@+id/me_ll"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
             android:orientation="vertical">
 
             <RelativeLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_120"
                 android:background="@color/purple_500"
                 android:gravity="center_vertical">
@@ -46,8 +44,8 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/me_recycle"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
         </LinearLayout>
     </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 </LinearLayout>

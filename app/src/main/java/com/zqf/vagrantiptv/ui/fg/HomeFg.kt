@@ -5,6 +5,7 @@ import com.zqf.vagrantiptv.databinding.HomeFgLayoutBinding
 import com.zqf.vagrantiptv.ui.adapter.HomeVpAdapter
 import com.zqf.vagrantiptv.ui.contact.HomeFgContact
 import com.zqf.vagrantiptv.ui.presenter.HomeFgPresenter
+import com.zqf.vagrantiptv.utils.ColorsUtil
 
 class HomeFg : BaseFragment<HomeFgLayoutBinding, HomeFgPresenter>(), HomeFgContact.IView {
 
@@ -22,5 +23,10 @@ class HomeFg : BaseFragment<HomeFgLayoutBinding, HomeFgPresenter>(), HomeFgConta
         mPresenter.initCnIndicatorVp(mVBind.indicator, mVBind.vp)
         mVBind.vp.adapter = HomeVpAdapter(childFragmentManager, mPresenter.titleList)
         mVBind.vp.offscreenPageLimit = mPresenter.titleList.size
+        if (mVBind.vp.currentItem == 0) tabSelect(0)
+    }
+
+    override fun tabSelect(p: Int) {
+        mVBind.rootFlyBg.setBackgroundResource(ColorsUtil.tabSelectColor(p))
     }
 }

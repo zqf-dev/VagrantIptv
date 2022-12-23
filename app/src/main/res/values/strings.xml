@@ -5,4 +5,6 @@
     <string name="home">首页</string>
     <string name="discover">发现</string>
     <string name="me">我的</string>
+    <string name="cha_str">×</string>
+    <string name="search_hint_str">输入关键字搜索</string>
 </resources>

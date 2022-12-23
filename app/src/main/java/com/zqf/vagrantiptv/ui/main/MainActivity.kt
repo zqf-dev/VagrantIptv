@@ -11,6 +11,7 @@ import com.zqf.vagrantiptv.ui.fg.DiscoverFg
 import com.zqf.vagrantiptv.ui.fg.HomeFg
 import com.zqf.vagrantiptv.ui.fg.MeFg
 import com.zqf.vagrantiptv.ui.presenter.MainPresenter
+import com.zqf.vagrantiptv.utils.StatusBarUtils
 
 /**
  * Main主页
@@ -51,6 +52,7 @@ class MainActivity : BaseMVPActivity<ActivityMainBinding, MainPresenter>() {
         mVBind.bnv.setOnItemSelectedListener {
             return@setOnItemSelectedListener when (it.itemId) {
                 R.id.home_fg -> {
+                    tabStatusColor(it.itemId)
                     showFragment(FRAGMENT_HOME)
                     true
                 }
@@ -66,6 +68,15 @@ class MainActivity : BaseMVPActivity<ActivityMainBinding, MainPresenter>() {
                     false
                 }
             }
+        }
+    }
+
+    /**
+     * 状态栏颜色改变
+     */
+    private fun tabStatusColor(itemId: Int) {
+        if (itemId != R.id.home_fg) {
+            StatusBarUtils.reset(this)
         }
     }
 

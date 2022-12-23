@@ -8,7 +8,7 @@ import net.lucode.hackware.magicindicator.MagicIndicator
 interface HomeFgContact {
 
     interface IView : BaseIView {
-
+        fun tabSelect(p: Int)
     }
 
     interface Presenter {

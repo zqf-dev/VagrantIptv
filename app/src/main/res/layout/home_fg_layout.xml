@@ -1,31 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <FrameLayout
-        android:id="@+id/root_fly_bg"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_230"
-        android:background="@color/purple_200" />
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="@dimen/dimen_45"
+        android:background="@color/purple_500"
+        android:orientation="horizontal">
 
-        <net.lucode.hackware.magicindicator.MagicIndicator
-            android:id="@+id/indicator"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_50" />
+        <ImageView
+            android:layout_width="@dimen/dimen_50"
+            android:layout_height="match_parent"
+            android:contentDescription="@null"
+            android:padding="@dimen/dimen_12"
+            android:src="@mipmap/search" />
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/vp"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dimen_6"
+            android:layout_marginBottom="@dimen/dimen_6"
+            android:layout_weight="1"
+            android:background="@drawable/search_fly_bg"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/dimen_20"
+            android:text="@string/search_hint_str"
+            android:textColor="@color/white"
+            tools:ignore="RtlSymmetry" />
+
+        <ImageView
+            android:layout_width="@dimen/dimen_50"
+            android:layout_height="match_parent"
+            android:contentDescription="@null"
+            android:padding="@dimen/dimen_10"
+            android:src="@mipmap/message" />
+
     </LinearLayout>
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <FrameLayout
+            android:id="@+id/root_fly_bg"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_230" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <net.lucode.hackware.magicindicator.MagicIndicator
+                android:id="@+id/indicator"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_45" />
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/vp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </FrameLayout>
+
+
+</LinearLayout>

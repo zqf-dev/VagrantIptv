@@ -1,5 +1,6 @@
 package com.zqf.vagrantiptv.ui.fg
 
+import android.annotation.SuppressLint
 import com.zqf.kotlinwanandroid.util.RvUtil
 import com.zqf.vagrantiptv.R
 import com.zqf.vagrantiptv.base.BaseFragment

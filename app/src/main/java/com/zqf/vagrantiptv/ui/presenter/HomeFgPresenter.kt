@@ -8,7 +8,6 @@ import com.zqf.vagrantiptv.base.BasePresenter
 import com.zqf.vagrantiptv.ui.contact.HomeFgContact
 import com.zqf.vagrantiptv.widget.ScaleTransitionPagerTitleView
 import net.lucode.hackware.magicindicator.MagicIndicator
-import net.lucode.hackware.magicindicator.ViewPagerHelper
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigator
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.CommonNavigatorAdapter
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerIndicator
@@ -43,7 +42,7 @@ class HomeFgPresenter(v: HomeFgContact.IView) :
 
             override fun getTitleView(context: Context?, index: Int): IPagerTitleView {
                 val colorTitleV = ScaleTransitionPagerTitleView(context)
-                colorTitleV.normalColor = Color.BLACK
+                colorTitleV.normalColor = Color.LTGRAY
                 colorTitleV.selectedColor = Color.WHITE
                 colorTitleV.text = titleList[index]
                 colorTitleV.textSize = 17f
@@ -61,7 +60,24 @@ class HomeFgPresenter(v: HomeFgContact.IView) :
             }
         }
         indicator.navigator = cn
-        ViewPagerHelper.bind(indicator, vp)
+        vp.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
+                indicator.onPageScrolled(position, positionOffset, positionOffsetPixels)
+            }
+
+            override fun onPageSelected(position: Int) {
+                indicator.onPageSelected(position)
+                getView()?.tabSelect(position)
+            }
+
+            override fun onPageScrollStateChanged(state: Int) {
+                indicator.onPageScrollStateChanged(state)
+            }
+        })
     }
 
     /**
