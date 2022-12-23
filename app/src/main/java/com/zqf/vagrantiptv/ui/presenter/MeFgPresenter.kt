@@ -1,7 +1,10 @@
 package com.zqf.vagrantiptv.ui.presenter
 
+import com.zqf.vagrantiptv.R
 import com.zqf.vagrantiptv.base.BasePresenter
+import com.zqf.vagrantiptv.entity.MeRecycleEntity
 import com.zqf.vagrantiptv.ui.contact.MeFgContact
+import kotlinx.coroutines.launch
 
 /**
  * Author: zqf
@@ -12,5 +15,18 @@ class MeFgPresenter(v: MeFgContact.ViewBase) : BasePresenter<MeFgContact.ViewBas
 
     init {
         attachView(v)
+    }
+
+    override fun getMeData() {
+        mCoroutineScope.launch {
+            val meList: MutableList<MeRecycleEntity> = mutableListOf()
+            meList.add(MeRecycleEntity(R.mipmap.grid_play_history_icon, "我的历史"))
+            meList.add(MeRecycleEntity(R.mipmap.grid_my_collection_icon, "我的收藏"))
+            meList.add(MeRecycleEntity(R.mipmap.grid_my_download_icon, "我的下载"))
+            meList.add(MeRecycleEntity(R.mipmap.grid_my_message_icon, "我的消息"))
+            meList.add(MeRecycleEntity(R.mipmap.grid_my_share_icon, "分享好友"))
+            meList.add(MeRecycleEntity(R.mipmap.grid_my_setting_icon, "设置"))
+            getView()?.meData(meList)
+        }
     }
 }
