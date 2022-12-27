@@ -4,5 +4,6 @@ public class Constant {
 
     companion object {
         const val delayTime = 2000L
+        const val key = "position"
     }
 }

@@ -1,11 +1,10 @@
 package com.zqf.vagrantiptv.ui.fg
 
-import android.annotation.SuppressLint
 import com.zqf.kotlinwanandroid.util.RvUtil
 import com.zqf.vagrantiptv.R
 import com.zqf.vagrantiptv.base.BaseFragment
 import com.zqf.vagrantiptv.databinding.MeFgLayoutBinding
-import com.zqf.vagrantiptv.entity.MeRecycleEntity
+import com.zqf.vagrantiptv.entity.MeItemEntity
 import com.zqf.vagrantiptv.ui.adapter.MeAdapter
 import com.zqf.vagrantiptv.ui.contact.MeFgContact
 import com.zqf.vagrantiptv.ui.presenter.MeFgPresenter
@@ -27,7 +26,7 @@ class MeFg : BaseFragment<MeFgLayoutBinding, MeFgPresenter>(),
         mVBind.meRecycle.adapter = meAdapter
     }
 
-    override fun meData(list: MutableList<MeRecycleEntity>) {
+    override fun meData(list: MutableList<MeItemEntity>) {
         meAdapter.setList(list)
     }
 }

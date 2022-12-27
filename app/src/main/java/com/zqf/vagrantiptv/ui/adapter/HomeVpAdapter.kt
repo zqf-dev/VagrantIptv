@@ -14,6 +14,9 @@ class HomeVpAdapter(fm: FragmentManager, titleList: MutableList<String>) :
     }
 
     override fun getItem(position: Int): Fragment {
-        return TabTypeFg.getInstance(position)
+        if (position != 0) {
+            return TabTypeFg.getInstance(position)
+        }
+        return Fragment()
     }
 }

@@ -47,8 +47,9 @@ class IPTVDataSource {
             }
             if (line.contains("http") || line.contains("https")) {
                 val json = JSONObject()
-                json.put("iptvName", el.split(",")[1])
-                json.put("iptvUrl", line)
+                json.put("title", el.split(",")[1])
+                json.put("url", line)
+                json.put("type", 0)
                 array.put(json)
                 el = ""
             }

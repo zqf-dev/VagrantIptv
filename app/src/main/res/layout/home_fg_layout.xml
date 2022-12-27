@@ -44,11 +44,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <FrameLayout
-            android:id="@+id/root_fly_bg"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_230" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -57,7 +52,9 @@
             <net.lucode.hackware.magicindicator.MagicIndicator
                 android:id="@+id/indicator"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_45" />
+                android:layout_height="@dimen/dimen_48"
+                android:background="@color/purple_500"
+                android:paddingBottom="@dimen/dimen_5" />
 
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/vp"

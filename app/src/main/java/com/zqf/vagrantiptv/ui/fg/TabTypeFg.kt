@@ -1,13 +1,21 @@
 package com.zqf.vagrantiptv.ui.fg
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import com.scwang.smart.refresh.layout.api.RefreshLayout
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener
+import com.shuyu.gsyvideoplayer.GSYVideoManager
+import com.youth.banner.Banner
 import com.youth.banner.indicator.CircleIndicator
+import com.zqf.kotlinwanandroid.util.RvUtil
+import com.zqf.vagrantiptv.R
 import com.zqf.vagrantiptv.base.BaseLazyFragment
+import com.zqf.vagrantiptv.constant.Constant
 import com.zqf.vagrantiptv.databinding.OthertypefgLayoutBinding
 import com.zqf.vagrantiptv.entity.BannerEntity
+import com.zqf.vagrantiptv.entity.TabTypeMultiEntity
 import com.zqf.vagrantiptv.ui.adapter.HomeBannerAdapter
+import com.zqf.vagrantiptv.ui.adapter.TabTypeRecycleAdapter
 import com.zqf.vagrantiptv.ui.contact.OtherTypeFgContact
 import com.zqf.vagrantiptv.ui.presenter.OtherTypeFgPresenter
 import com.zqf.vagrantiptv.utils.FLog
@@ -18,13 +26,17 @@ import com.zqf.vagrantiptv.utils.FLog
 class TabTypeFg : BaseLazyFragment<OthertypefgLayoutBinding, OtherTypeFgPresenter>(),
     OtherTypeFgContact.IView, OnRefreshListener {
 
-    private var p: Int = -1
+    private var p = 0
+    private lateinit var banner: Banner<BannerEntity, HomeBannerAdapter>
+    private val mTabTypeRecycleAdapter by lazy {
+        TabTypeRecycleAdapter()
+    }
 
     companion object {
         fun getInstance(p: Int): TabTypeFg {
             val otherTypeFg = TabTypeFg()
             val bundle = Bundle()
-            bundle.putInt("position", p)
+            bundle.putInt(Constant.key, p)
             otherTypeFg.arguments = bundle
             return otherTypeFg
         }
@@ -34,11 +46,17 @@ class TabTypeFg : BaseLazyFragment<OthertypefgLayoutBinding, OtherTypeFgPresente
         return OtherTypeFgPresenter(this)
     }
 
+    @SuppressLint("InflateParams")
     override fun initV() {
-        p = arguments?.getInt("position", -1)!!
+        p = arguments!!.getInt(Constant.key)
+        val headView = layoutInflater.inflate(R.layout.banner_head_layout, null, false)
+        banner = headView.findViewById(R.id.banner)
+        banner.setLoopTime(5000).addBannerLifecycleObserver(this)
+        banner.indicator = CircleIndicator(mContext)
+        mVBind.recycle.layoutManager = RvUtil.vertical(mContext)
+        mVBind.recycle.adapter = mTabTypeRecycleAdapter
+        mTabTypeRecycleAdapter.addHeaderView(headView)
         mVBind.srl.setOnRefreshListener(this)
-        mVBind.banner.setLoopTime(5000).setBannerRound(10f)
-        mVBind.banner.indicator = CircleIndicator(mContext)
     }
 
     override fun onFgFirstVisible() {
@@ -47,14 +65,34 @@ class TabTypeFg : BaseLazyFragment<OthertypefgLayoutBinding, OtherTypeFgPresente
         mPresenter.getIPTVBanner()
     }
 
+    override fun recycleData(data: MutableList<TabTypeMultiEntity>) {
+        FLog.e("list: >> $data")
+        mTabTypeRecycleAdapter.setList(data)
+    }
+
     override fun banner(dataBanner: MutableList<BannerEntity>) {
-        mVBind.banner.setAdapter(HomeBannerAdapter(dataBanner))
-        mVBind.banner.setOnBannerListener { data, _ ->
-            FLog.e("Banner data: >> $data")
+        banner.setAdapter(HomeBannerAdapter(dataBanner))
+        banner.setOnBannerListener { data, position ->
+            val entity = data as BannerEntity
         }
     }
 
     override fun onRefresh(refreshLayout: RefreshLayout) {
+        mVBind.srl.finishRefresh()
+    }
 
+    override fun onResume() {
+        super.onResume()
+        GSYVideoManager.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        GSYVideoManager.onPause()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        GSYVideoManager.releaseAllVideos()
     }
 }

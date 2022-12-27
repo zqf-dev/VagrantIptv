@@ -5,7 +5,6 @@ import com.zqf.vagrantiptv.databinding.HomeFgLayoutBinding
 import com.zqf.vagrantiptv.ui.adapter.HomeVpAdapter
 import com.zqf.vagrantiptv.ui.contact.HomeFgContact
 import com.zqf.vagrantiptv.ui.presenter.HomeFgPresenter
-import com.zqf.vagrantiptv.utils.ColorsUtil
 
 class HomeFg : BaseFragment<HomeFgLayoutBinding, HomeFgPresenter>(), HomeFgContact.IView {
 
@@ -27,6 +26,6 @@ class HomeFg : BaseFragment<HomeFgLayoutBinding, HomeFgPresenter>(), HomeFgConta
     }
 
     override fun tabSelect(p: Int) {
-        mVBind.rootFlyBg.setBackgroundResource(ColorsUtil.tabSelectColor(p))
+
     }
 }
