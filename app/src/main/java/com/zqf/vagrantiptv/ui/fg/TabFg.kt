@@ -2,12 +2,12 @@ package com.zqf.vagrantiptv.ui.fg
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import androidx.recyclerview.widget.GridLayoutManager
 import com.scwang.smart.refresh.layout.api.RefreshLayout
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener
 import com.shuyu.gsyvideoplayer.GSYVideoManager
 import com.youth.banner.Banner
 import com.youth.banner.indicator.CircleIndicator
-import com.zqf.kotlinwanandroid.util.RvUtil
 import com.zqf.vagrantiptv.R
 import com.zqf.vagrantiptv.base.BaseLazyFragment
 import com.zqf.vagrantiptv.constant.Constant
@@ -19,11 +19,12 @@ import com.zqf.vagrantiptv.ui.adapter.TabTypeRecycleAdapter
 import com.zqf.vagrantiptv.ui.contact.OtherTypeFgContact
 import com.zqf.vagrantiptv.ui.presenter.OtherTypeFgPresenter
 import com.zqf.vagrantiptv.utils.FLog
+import com.zqf.vagrantiptv.utils.RHeadGridItemDecoration
 
 /**
  * 首页Tab分类下通用的Fragment
  */
-class TabTypeFg : BaseLazyFragment<OthertypefgLayoutBinding, OtherTypeFgPresenter>(),
+class TabFg : BaseLazyFragment<OthertypefgLayoutBinding, OtherTypeFgPresenter>(),
     OtherTypeFgContact.IView, OnRefreshListener {
 
     private var p = 0
@@ -33,8 +34,8 @@ class TabTypeFg : BaseLazyFragment<OthertypefgLayoutBinding, OtherTypeFgPresente
     }
 
     companion object {
-        fun getInstance(p: Int): TabTypeFg {
-            val otherTypeFg = TabTypeFg()
+        fun getInstance(p: Int): TabFg {
+            val otherTypeFg = TabFg()
             val bundle = Bundle()
             bundle.putInt(Constant.key, p)
             otherTypeFg.arguments = bundle
@@ -53,7 +54,9 @@ class TabTypeFg : BaseLazyFragment<OthertypefgLayoutBinding, OtherTypeFgPresente
         banner = headView.findViewById(R.id.banner)
         banner.setLoopTime(5000).addBannerLifecycleObserver(this)
         banner.indicator = CircleIndicator(mContext)
-        mVBind.recycle.layoutManager = RvUtil.vertical(mContext)
+        mVBind.recycle.layoutManager = GridLayoutManager(mContext, 2)
+        val itemDecoration = RHeadGridItemDecoration(mContext)
+        mVBind.recycle.addItemDecoration(itemDecoration)
         mVBind.recycle.adapter = mTabTypeRecycleAdapter
         mTabTypeRecycleAdapter.addHeaderView(headView)
         mVBind.srl.setOnRefreshListener(this)

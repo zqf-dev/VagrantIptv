@@ -7,7 +7,7 @@
     <com.zqf.vagrantiptv.widget.video.SampleCoverVideo
         android:id="@+id/t1_player"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_210" />
+        android:layout_height="@dimen/dimen_160" />
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -31,9 +31,4 @@
             android:contentDescription="@null"
             android:src="@mipmap/recycle_more" />
     </FrameLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_0_5"
-        android:background="@color/gray" />
 </LinearLayout>

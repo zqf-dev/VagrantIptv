@@ -1,6 +1,6 @@
 package com.zqf.vagrantiptv.ui.fg
 
-import com.zqf.kotlinwanandroid.util.RvUtil
+import com.zqf.vagrantiptv.utils.RvUtil
 import com.zqf.vagrantiptv.R
 import com.zqf.vagrantiptv.base.BaseFragment
 import com.zqf.vagrantiptv.databinding.MeFgLayoutBinding

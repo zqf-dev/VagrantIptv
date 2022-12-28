@@ -26,7 +26,7 @@ class TabTypeRecycleAdapter : BaseMultiItemQuickAdapter<TabTypeMultiEntity, Base
             holder.setText(R.id.t1_title, item.title)
             val gsyVideoPlayer = holder.getView<SampleCoverVideo>(R.id.t1_player)
             //使用lazy的set可以避免滑动卡的情况存在
-            gsyVideoPlayer.setUpLazy(item.url, true, null, null, "");
+            gsyVideoPlayer.setUpLazy(item.url, true, null, null, "")
             gsyVideoPlayer.playTag = TAG
             gsyVideoPlayer.isReleaseWhenLossAudio = false
             gsyVideoPlayer.isRotateWithSystem = false
