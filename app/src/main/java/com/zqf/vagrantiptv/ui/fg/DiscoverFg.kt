@@ -21,18 +21,6 @@ class DiscoverFg : BaseFragment<DiscoverFgLayoutBinding, DiscoverFgPresenter>(),
 
     override fun initV() {
         val list = mutableListOf<String>()
-        list.add("123")
-        list.add("123")
-        list.add("123")
-        list.add("123")
-        list.add("123")
-        list.add("123")
-        list.add("123")
-        list.add("123")
-        list.add("123")
-        list.add("123")
-        list.add("123")
-        list.add("123")
         mVBind.disRecycle.layoutManager = RvUtil.vertical(mContext)
         mVBind.disRecycle.adapter = mDiscoverAdapter
         mDiscoverAdapter.setList(list)
