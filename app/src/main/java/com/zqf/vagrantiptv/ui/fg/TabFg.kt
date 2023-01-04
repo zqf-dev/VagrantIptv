@@ -18,7 +18,7 @@ import com.zqf.vagrantiptv.ui.adapter.HomeBannerAdapter
 import com.zqf.vagrantiptv.ui.adapter.TabTypeRecycleAdapter
 import com.zqf.vagrantiptv.ui.contact.OtherTypeFgContact
 import com.zqf.vagrantiptv.ui.presenter.OtherTypeFgPresenter
-import com.zqf.vagrantiptv.utils.FLog
+import com.zqf.vagrantiptv.utils.LFog
 import com.zqf.vagrantiptv.utils.RHeadGridItemDecoration
 
 /**
@@ -69,7 +69,7 @@ class TabFg : BaseLazyFragment<OthertypefgLayoutBinding, OtherTypeFgPresenter>()
     }
 
     override fun recycleData(data: MutableList<TabTypeMultiEntity>) {
-        FLog.e("list: >> $data")
+        LFog.e("list: >> $data")
         mTabTypeRecycleAdapter.setList(data)
     }
 

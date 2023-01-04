@@ -8,7 +8,7 @@ package com.zqf.vagrantiptv.utils
  * @param occurred 发生位置
  */
 data class LogInfo(
-    var type: FLog.Type,
+    var type: LFog.Type,
     var msg: String?,
     var tag: String,
     var tr: Throwable?,

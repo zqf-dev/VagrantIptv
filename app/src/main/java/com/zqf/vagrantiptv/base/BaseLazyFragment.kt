@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewbinding.ViewBinding
-import com.zqf.vagrantiptv.utils.FLog
 import java.lang.reflect.ParameterizedType
 
 /**

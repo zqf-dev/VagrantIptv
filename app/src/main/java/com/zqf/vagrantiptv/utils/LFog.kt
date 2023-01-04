@@ -1,9 +1,9 @@
 package com.zqf.vagrantiptv.utils
 
 import android.util.Log
-import com.zqf.vagrantiptv.utils.FLog.enabled
-import com.zqf.vagrantiptv.utils.FLog.logHooks
-import com.zqf.vagrantiptv.utils.FLog.tag
+import com.zqf.vagrantiptv.utils.LFog.enabled
+import com.zqf.vagrantiptv.utils.LFog.logHooks
+import com.zqf.vagrantiptv.utils.LFog.tag
 import org.json.JSONArray
 import org.json.JSONObject
 import org.json.JSONTokener
@@ -14,7 +14,7 @@ import org.json.JSONTokener
  * @property enabled 日志全局开关
  * @property logHooks 日志拦截器
  */
-object FLog {
+object LFog {
 
     enum class Type {
         VERBOSE, DEBUG, INFO, WARN, ERROR, WTF

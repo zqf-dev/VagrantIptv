@@ -11,7 +11,7 @@ import com.scwang.smart.refresh.layout.listener.DefaultRefreshHeaderCreator
 import com.tencent.mmkv.MMKV
 import com.zqf.vagrantiptv.BuildConfig
 import com.zqf.vagrantiptv.R
-import com.zqf.vagrantiptv.utils.FLog
+import com.zqf.vagrantiptv.utils.LFog
 
 
 class App : Application() {
@@ -24,12 +24,12 @@ class App : Application() {
     }
 
     private fun initLog() {
-        FLog.setDebug(BuildConfig.DEBUG)
+        LFog.setDebug(BuildConfig.DEBUG)
     }
 
     private fun initKKMV() {
         val mMMKVPath = MMKV.initialize(this)
-        FLog.e("mmkv path: >>$mMMKVPath")
+        LFog.e("mmkv path: >>$mMMKVPath")
     }
 
     private fun getContext(): Context {
