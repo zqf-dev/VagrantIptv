@@ -70,5 +70,52 @@ class IPTVDataSource {
             imgList.add(BannerEntity(R.mipmap.banner8))
             return imgList
         }
+
+
+        //----------------------------------------------------------------------------------------------
+        fun getData2(fileName: String): String {
+            try {
+                if (TextUtils.isEmpty(fileName)) {
+                    return ""
+                }
+                val json = JSONObject()
+                val array = JSONArray()
+                json.put("code", 200)
+                json.put("msg", "操作成功")
+                json.put("data", array)
+                val iStream = App.context.assets.open(fileName)
+                val isReader = InputStreamReader(iStream)
+                BufferedReader(isReader).use {
+                    var line: String
+                    while (true) {
+                        line = it.readLine() ?: break
+                        dataHandle2(line, array)
+                    }
+                }
+                iStream.close()
+                isReader.close()
+                return json.toString()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+            return ""
+        }
+
+        private var el2: String = ""
+        private fun dataHandle2(line: String, array: JSONArray) {
+            if (line.contains("#EXTINF:-1")) {
+                el2 = line
+                return
+            }
+            if (line.contains("http") || line.contains("https")) {
+                val json = JSONObject()
+                json.put("title", el2.split("group-title=")[1])
+                json.put("thumb", el2.split("tvg-logo=")[1])
+                json.put("url", line)
+                json.put("type", 0)
+                array.put(json)
+                el2 = ""
+            }
+        }
     }
 }

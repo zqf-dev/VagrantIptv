@@ -20,6 +20,7 @@ class DiscoverFg : BaseFragment<DiscoverFgLayoutBinding, DiscoverFgPresenter>(),
     }
 
     override fun initV() {
+        mPresenter.getData()
         val list = mutableListOf<String>()
         mVBind.disRecycle.layoutManager = RvUtil.vertical(mContext)
         mVBind.disRecycle.adapter = mDiscoverAdapter

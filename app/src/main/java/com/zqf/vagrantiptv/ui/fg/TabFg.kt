@@ -3,6 +3,7 @@ package com.zqf.vagrantiptv.ui.fg
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
+import com.orhanobut.logger.Logger
 import com.scwang.smart.refresh.layout.api.RefreshLayout
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener
 import com.shuyu.gsyvideoplayer.GSYVideoManager
@@ -18,7 +19,6 @@ import com.zqf.vagrantiptv.ui.adapter.HomeBannerAdapter
 import com.zqf.vagrantiptv.ui.adapter.TabTypeRecycleAdapter
 import com.zqf.vagrantiptv.ui.contact.OtherTypeFgContact
 import com.zqf.vagrantiptv.ui.presenter.OtherTypeFgPresenter
-import com.zqf.vagrantiptv.utils.LFog
 import com.zqf.vagrantiptv.utils.RHeadGridItemDecoration
 
 /**
@@ -69,7 +69,7 @@ class TabFg : BaseLazyFragment<OthertypefgLayoutBinding, OtherTypeFgPresenter>()
     }
 
     override fun recycleData(data: MutableList<TabTypeMultiEntity>) {
-        LFog.e("list: >> $data")
+        Logger.e("list: >> $data")
         mTabTypeRecycleAdapter.setList(data)
     }
 

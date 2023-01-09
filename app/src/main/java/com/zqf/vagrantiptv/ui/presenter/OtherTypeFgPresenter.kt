@@ -1,9 +1,9 @@
 package com.zqf.vagrantiptv.ui.presenter
 
+import com.orhanobut.logger.Logger
 import com.zqf.vagrantiptv.base.BasePresenter
 import com.zqf.vagrantiptv.entity.TabTypeMultiEntity
 import com.zqf.vagrantiptv.ui.contact.OtherTypeFgContact
-import com.zqf.vagrantiptv.utils.LFog
 import com.zqf.vagrantiptv.utils.FileUtils
 import com.zqf.vagrantiptv.utils.IPTVDataSource
 import kotlinx.coroutines.launch
@@ -20,7 +20,7 @@ class OtherTypeFgPresenter(v: OtherTypeFgContact.IView) :
         if (p >= 0) {
             mCoroutineScope.launch {
                 val data = IPTVDataSource.getData(FileUtils.typeToAssetsName(p))
-                LFog.e("data:>> $data")
+                Logger.e("data:>> $data")
                 val json = JSONObject(data)
                 val arrays = json.optJSONArray("data")
                 val res = mutableListOf<TabTypeMultiEntity>()

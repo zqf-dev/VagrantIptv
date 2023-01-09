@@ -3,6 +3,9 @@ package com.zqf.vagrantiptv.app
 import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
+import com.orhanobut.logger.AndroidLogAdapter
+import com.orhanobut.logger.Logger
+import com.orhanobut.logger.PrettyFormatStrategy
 import com.scwang.smart.refresh.footer.ClassicsFooter
 import com.scwang.smart.refresh.header.ClassicsHeader
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
@@ -11,7 +14,6 @@ import com.scwang.smart.refresh.layout.listener.DefaultRefreshHeaderCreator
 import com.tencent.mmkv.MMKV
 import com.zqf.vagrantiptv.BuildConfig
 import com.zqf.vagrantiptv.R
-import com.zqf.vagrantiptv.utils.LFog
 
 
 class App : Application() {
@@ -24,12 +26,21 @@ class App : Application() {
     }
 
     private fun initLog() {
-        LFog.setDebug(BuildConfig.DEBUG)
+        val formatStrategy = PrettyFormatStrategy.newBuilder()
+            .methodCount(0)
+            .methodOffset(3)
+            .tag("VTag")
+            .build()
+        Logger.addLogAdapter(object : AndroidLogAdapter(formatStrategy) {
+            override fun isLoggable(priority: Int, tag: String?): Boolean {
+                return BuildConfig.DEBUG
+            }
+        })
     }
 
     private fun initKKMV() {
         val mMMKVPath = MMKV.initialize(this)
-        LFog.e("mmkv path: >>$mMMKVPath")
+        Logger.e("mmkv path: >>$mMMKVPath")
     }
 
     private fun getContext(): Context {

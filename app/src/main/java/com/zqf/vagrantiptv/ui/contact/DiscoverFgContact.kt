@@ -9,6 +9,6 @@ interface DiscoverFgContact {
     }
 
     interface Presenter {
-
+        fun getData()
     }
 }
