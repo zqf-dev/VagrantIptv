@@ -4,7 +4,16 @@
 
 ### 频道：首页、直播、听音、节目单、栏目大全、片库、热榜、视频百科、微故事、AI美食
 
-### 1、直播
+### 1、首页
+
+```java
+webview加载入口：
+https://tv.cctv.com/m/
+```
+
+
+
+### 2、直播
 
 ```java
 url: https://api.cntv.cn/epg/nowepg
@@ -52,6 +61,7 @@ videoUrl：https://cctvwbndbd.a.bdydns.com/cctvwbnd/cctv1_2/index.m3u8
 }
 videoUrl：	https://newcntv.qcloudcdn.com/asp/hls/main/0303000a/3/default/312ab1d0a3184ce0b4e668869a9b6fa4/main.m3u8?maxbr=2048
 2、
+https://ldcctvwbcdks.v.kcdnvip.com/ldcctvwbcd/cdrmldcctv5_1/index.m3u8
 ```
 
 #### CCTV13
@@ -70,6 +80,31 @@ https://newcntv.qcloudcdn.com/asp/hls/main/0303000a/3/default/6e7e815400324e4ca9
 {
     来源：取 [对应时段详情接口] 中hls_url字段值
 }
+```
+
+#### CCTV7
+
+```java
+1、cctv7播放时段列表接口：
+https://api.cntv.cn/epg/getEpgInfoByChannelNew?c=cctv7&serviceId=tvcctv&d=20230613&t=jsonp&cb=jsonp11111
+https://api.cntv.cn/NewVideo/getVideoListByColumn?id=TOPC1564110696628209&n=20&sort=desc&p=1&d=&mode=0&serviceId=tvcctv&callback=lanmu_0
+
+https://api.cntv.cn/lanmu/columnInfoByColumnId?id=TOPC1564110696628209&serviceId=tvcctv&cb=Callback
+2、对应时段的详情:
+https://vdn.apps.cntv.cn/api/getHttpVideoInfo.do?pid=6487F36FD37DD7092382C7B5A2
+{
+    Method：Get
+    params：pid：[播放时段列表中item项的vid值]
+}
+3、对应时段视频Url：
+https://hls.cntv.kcdnvip.com/asp/hls/main/0303000a/3/default/ebc8ba438a764adda3650ffd076f5e1f/main.m3u8?maxbr=2048
+{
+    来源：取 [对应时段详情接口] 中hls_url字段值
+}
+所有的ts流：
+https://tracker-00.qvb.qcloud.com/api/tracker/v2/htbt?channel=h5_live_hls_1252894780_default_v3__cctvwbcdbdabdydnscom_cdrmcctv7_1_index&pid=6488128FB148D7092382C864C5&mode=bat
+ts流部分：
+https://cctvwbcdbd.a.bdydns.com/cctvwbcd/cdrmcctv7_1/cdrmcctv7_1_1350-1686586021.ts
 ```
 
 
